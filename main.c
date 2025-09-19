@@ -39,18 +39,21 @@ int main()
     printf("\n");
 
     //ex1
+    printf("\n=========== EXERCICIO 1 ===========\n");
     Fila *f2 = cria_Fila();
     divorsio_edition(fi, f2, 1);
     printf("\n\n\n");
 
     //ex2
     //a
+    printf("\n=========== EXERCICIO 2a - Fila de Filas ===========\n");
     File_file(fi);
     printf("\n");
 
     libera_Fila(fi);
 
     //b
+    printf("\n=========== EXERCICIO 2b - Fila de Pilhas ===========\n");
     Pilha *pi = NULL;
     for(int i = 0; i < 4; i++)
     {
@@ -62,6 +65,7 @@ int main()
     printf("\n\n\n");
 
     //c
+    printf("\n=========== EXERCICIO 2c - Pilha de Filas ===========\n");
     Fila *fi_2c = cria_Fila();
     for(int i = 0; i < 4; i++)
     {
@@ -74,7 +78,9 @@ int main()
     Pilha_de_Filas(fi_2c);
     printf("\n\n\n");
 
+
     //ex3
+    printf("\n=========== EXERCICIO 3 ===========\n");
     Fila *fi_ex3 = cria_Fila();
     for(int i = 0; i < 4; i++)
     {
@@ -90,7 +96,7 @@ int main()
     printf("\n\n\n");
 
     //ex4
-
+    printf("\n=========== EXERCICIO 4 ===========\n");
     Fila *f4 = cria_Fila();
 
     for(int i = 0; i < 4; i++)
@@ -198,6 +204,7 @@ int main()
     while(opcao != 0);
 
     //ex6
+    printf("\n=========== EXERCICIO 6 ===========\n");
     Fila *f1_ex6 = cria_Fila();
     Fila *f2_ex6 = cria_Fila();
     Fila *fi_reserva = cria_Fila();
@@ -228,6 +235,7 @@ int main()
     libera_Fila(fi_reserva);
 
     //ex7
+    printf("\n=========== EXERCICIO 7 ===========\n");
     Fila *fi_ex7 = cria_Fila();
     for(int i = 0; i < 4; i++)
     {

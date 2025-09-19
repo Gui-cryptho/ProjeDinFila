@@ -339,7 +339,8 @@ void imprime_Fi_PI(Fila_De_Pilhas *fi_pi)
 {
     Elem_fi_pi *no = fi_pi->inicio;
 
-    while(no != NULL){
+    while(no != NULL)
+    {
         printf("%p", no->pi);
         printf("\n\n");
         Imprimi_Pilha(no->pi);
@@ -363,17 +364,18 @@ void Fila_Pilha(Pilha *pi)
 void liberar_pilha(Pilha *pi)
 {
     Pilha *no;
-    while (pi != NULL) {
+    while (pi != NULL)
+    {
         no = pi;
         pi = pi->prox;
         free(no);
     }
 }
 
-
 //c
 
-struct elemento_pilha_fila {
+struct elemento_pilha_fila
+{
     Fila *fila;
     struct elemento_pilha_fila *prox;
 };
@@ -383,7 +385,8 @@ typedef struct elemento_pilha_fila Elem_PiFi;
 
 typedef struct Elem_PiFi Pilha_Fila;
 
-void empilhar_fila(Pilha_Fila **pi_fi, Fila *fila) {
+void empilhar_fila(Pilha_Fila **pi_fi, Fila *fila)
+{
     Elem_PiFi *no = (Elem_PiFi*)malloc(sizeof(Elem_PiFi));
     if (no == NULL)
         return;
@@ -393,17 +396,20 @@ void empilhar_fila(Pilha_Fila **pi_fi, Fila *fila) {
     *pi_fi = no;
 }
 
-void imprime_pilha_filas(Pilha_Fila *pi_fi) {
+void imprime_pilha_filas(Pilha_Fila *pi_fi)
+{
     Elem_PiFi *no = pi_fi;
 
-    while (no != NULL) {
+    while (no != NULL)
+    {
         printf("%p\n\n", no->fila);
         imprime_Fila(no->fila);
         no = no->prox;
     }
 }
 
-void Pilha_de_Filas(Fila *f1) {
+void Pilha_de_Filas(Fila *f1)
+{
     Pilha_Fila *pi_fi = NULL;
 
     empilhar_fila(&pi_fi, f1);
@@ -418,20 +424,23 @@ Empilha, Desempilha, e uma variável aux inteira, escreva um programa
 que inverte a ordem dos elementos da fila.
 */
 
-void inverter_fila_com_pilha(Fila *f) {
+void inverter_fila_com_pilha(Fila *f)
+{
     if (f == NULL || Fila_vazia(f))
         return;
 
     Pilha *p = NULL;
     struct aluno aux;
 
-    while (!Fila_vazia(f)) {
+    while (!Fila_vazia(f))
+    {
         consulta_Fila(f, &aux);
         remove_Fila(f);
         empilhar(&p, aux);
     }
 
-    while (p != NULL) {
+    while (p != NULL)
+    {
         aux = p->dados;
         insere_Fila(f, aux);
         Pilha *tmp = p;

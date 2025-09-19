@@ -27,7 +27,6 @@ int divorsio_edition(Fila *f1, Fila *f2, int n);
 //ex2
 //a:
 typedef struct fila_fila Fila_Fila;
-
 Fila_Fila *criar_file();
 void insere_file(Fila_Fila *fi_fi, Fila *fi);
 void imprime_fi_fi(Fila_Fila *fi_fi);
