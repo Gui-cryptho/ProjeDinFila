@@ -4,18 +4,18 @@
 	<ActiveTarget name="Debug" />
 	<File name="FilaDin.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="21" topLine="17" />
+			<Cursor1 position="694" topLine="3" />
 		</Cursor>
 	</File>
-	<File name="FilaDin.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="FilaDin.c" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="10894" topLine="463" />
+			<Cursor1 position="5037" topLine="231" />
 		</Cursor>
 	</File>
 	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4325" topLine="137" />
+			<Cursor1 position="1828" topLine="87" />
 		</Cursor>
 	</File>
-	<EditorTabsLayout layout="0821efb068c981ef00001b5500000002=0;ProjFilaDin:main.c,1;ProjFilaDin:FilaDin.h,*2;ProjFilaDin:FilaDin.c@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=846;besth=468;minw=846;minh=468;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0821efb068c981ef00001b5500000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=250;besth=250;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=252|" />
+	<EditorTabsLayout layout="0821996068cc635500004b5d00000002=0;ProjFilaDin:main.c,1;ProjFilaDin:FilaDin.h,*2;ProjFilaDin:FilaDin.c@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=959;besth=468;minw=959;minh=468;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0821996068cc635500004b5d00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=250;besth=250;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=252|" />
 </CodeBlocks_layout_file>

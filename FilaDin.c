@@ -171,6 +171,7 @@ b. Uma fila de pilhas;
 c. Uma pilha de filas;
 */
 
+//a
 struct elementoFila_Fila
 {
     Fila *fila;
@@ -239,6 +240,207 @@ void File_file(Fila *fi)
 
 }
 
+//b
+struct pilha
+{
+    struct aluno dados;
+    struct pilha *prox;
+};
+
+
+struct elemento_fila_pi
+{
+    Pilha *pi;
+    struct elemento_fila_pi *prox;
+};
+
+typedef struct elemento_fila_pi Elem_fi_pi;
+
+struct fila_de_pilhas
+{
+    struct elemento_fila_pi *inicio;
+    struct elemento_fila_pi *final;
+    int qtd;
+};
+
+typedef struct fila_de_pilhas Fila_De_Pilhas;
+
+Pilha *criar_pilha()
+{
+    Pilha *pi = (Pilha*)malloc(sizeof(Pilha));
+    if(pi == NULL)
+        return 0;
+
+    pi->prox = NULL;
+    return pi;
+
+}
+
+Fila_De_Pilhas *criar_fila_pi()
+{
+    Fila_De_Pilhas *fi = (Fila_De_Pilhas*)malloc(sizeof(Fila_De_Pilhas));
+    if (fi == NULL)
+        return NULL;
+
+    fi->inicio = NULL;
+    fi->final = NULL;
+    fi->qtd = 0;
+    return fi;
+}
+
+
+void empilhar(Pilha **pi, struct aluno al)
+{
+    Pilha *no = (Pilha*)malloc(sizeof(Pilha));
+    if(no == NULL)
+        return;
+
+    no->dados = al;
+    no->prox = *pi;
+    *pi = no;
+
+}
+
+void insere_pi(Fila_De_Pilhas *fi, Pilha *pi)
+{
+    Elem_fi_pi *no = (Elem_fi_pi*)malloc(sizeof(Elem_fi_pi));
+    if(no == NULL)
+        return;
+
+    no->pi = pi;
+    no->prox = NULL;
+    if(fi->final == NULL)
+        fi->inicio = no;
+    else
+        fi->final->prox = no;
+    fi->final = no;
+    fi->qtd++;
+
+}
+
+void Imprimi_Pilha(Pilha *pi)
+{
+    Pilha *no = pi;
+
+    while(no != NULL)
+    {
+        printf("Matricula: %d\n",no->dados.matricula);
+        printf("Nome: %s\n",no->dados.nome);
+        printf("Notas: %.2f %.2f %.2f\n",no->dados.n1,
+               no->dados.n2,
+               no->dados.n3);
+        printf("-------------------------------\n");
+        no = no->prox;
+    }
+
+}
+
+void imprime_Fi_PI(Fila_De_Pilhas *fi_pi)
+{
+    Elem_fi_pi *no = fi_pi->inicio;
+
+    while(no != NULL){
+        printf("%p", no->pi);
+        printf("\n\n");
+        Imprimi_Pilha(no->pi);
+        no = no->prox;
+    }
+
+}
+
+void Fila_Pilha(Pilha *pi)
+{
+    Fila_De_Pilhas *fi_pi = criar_fila_pi();
+
+    insere_pi(fi_pi, pi);
+
+    imprime_Fi_PI(fi_pi);
+
+
+
+}
+
+void liberar_pilha(Pilha *pi)
+{
+    Pilha *no;
+    while (pi != NULL) {
+        no = pi;
+        pi = pi->prox;
+        free(no);
+    }
+}
+
+
+//c
+
+struct elemento_pilha_fila {
+    Fila *fila;
+    struct elemento_pilha_fila *prox;
+};
+
+typedef struct elemento_pilha_fila Elem_PiFi;
+
+
+typedef struct Elem_PiFi Pilha_Fila;
+
+void empilhar_fila(Pilha_Fila **pi_fi, Fila *fila) {
+    Elem_PiFi *no = (Elem_PiFi*)malloc(sizeof(Elem_PiFi));
+    if (no == NULL)
+        return;
+
+    no->fila = fila;
+    no->prox = *pi_fi;
+    *pi_fi = no;
+}
+
+void imprime_pilha_filas(Pilha_Fila *pi_fi) {
+    Elem_PiFi *no = pi_fi;
+
+    while (no != NULL) {
+        printf("%p\n\n", no->fila);
+        imprime_Fila(no->fila);
+        no = no->prox;
+    }
+}
+
+void Pilha_de_Filas(Fila *f1) {
+    Pilha_Fila *pi_fi = NULL;
+
+    empilhar_fila(&pi_fi, f1);
+
+    imprime_pilha_filas(pi_fi);
+}
+
+/*
+3) Considere uma pilha P vazia e uma fila F não vazia. Utilizando apenas
+os testes de fila e pilha vazias, as operações Enfileira, Desenfileira,
+Empilha, Desempilha, e uma variável aux inteira, escreva um programa
+que inverte a ordem dos elementos da fila.
+*/
+
+void inverter_fila_com_pilha(Fila *f) {
+    if (f == NULL || Fila_vazia(f))
+        return;
+
+    Pilha *p = NULL;
+    struct aluno aux;
+
+    while (!Fila_vazia(f)) {
+        consulta_Fila(f, &aux);
+        remove_Fila(f);
+        empilhar(&p, aux);
+    }
+
+    while (p != NULL) {
+        aux = p->dados;
+        insere_Fila(f, aux);
+        Pilha *tmp = p;
+        p = p->prox;
+        free(tmp);
+    }
+}
+
+
 /*
 4) Considere a implementação de filas usando a característica de filas
 “circulares”, pesquise sobre o assunto. Escreva uma função
@@ -303,6 +505,34 @@ void imprimi_bolinha(Fila *f1)
            no->dados.n2,
            no->dados.n3);
     printf("-------------------------------\n");
+}
+
+void fura_fila_circular(Fila *fi, struct aluno al)
+{
+    if (fi == NULL)
+        return;
+
+    Elem *no = (Elem*)malloc(sizeof(Elem));
+    if (no == NULL)
+        return;
+
+    no->dados = al;
+
+    if (fi->inicio == NULL)
+    {
+
+        fi->inicio = no;
+        fi->final = no;
+        no->prox = no;
+    }
+    else
+    {
+        no->prox = fi->inicio;
+        fi->final->prox = no;
+        fi->inicio = no;
+    }
+
+    fi->qtd++;
 }
 
 void libera_planeta(Fila *fi)
@@ -479,7 +709,8 @@ ordem crescente e preencha a última com os valores das duas primeiras
 em ordem crescente.
 
 */
-void ordena_fila_reserva(Fila *fi_reserva) {
+void ordena_fila_reserva(Fila *fi_reserva)
+{
     if (fi_reserva == NULL || fi_reserva->inicio == NULL)
         return;
 
@@ -487,12 +718,15 @@ void ordena_fila_reserva(Fila *fi_reserva) {
     Elem *atual;
     struct aluno temp;
 
-    do {
+    do
+    {
         trocou = 0;
         atual = fi_reserva->inicio;
 
-        while (atual->prox != NULL) {
-            if (atual->dados.matricula > atual->prox->dados.matricula) {
+        while (atual->prox != NULL)
+        {
+            if (atual->dados.matricula > atual->prox->dados.matricula)
+            {
 
                 temp = atual->dados;
                 atual->dados = atual->prox->dados;
@@ -501,7 +735,8 @@ void ordena_fila_reserva(Fila *fi_reserva) {
             }
             atual = atual->prox;
         }
-    } while (trocou);
+    }
+    while (trocou);
 }
 
 
@@ -520,12 +755,14 @@ void fila_compleento(Fila *fi, Fila *fi1, Fila *fi_reserva)
     }
 
 
-    while (no_1 != NULL) {
+    while (no_1 != NULL)
+    {
         insere_Fila(fi_reserva, no_1->dados);
         no_1 = no_1->prox;
     }
 
-    while (no_2 != NULL) {
+    while (no_2 != NULL)
+    {
         insere_Fila(fi_reserva, no_2->dados);
         no_2 = no_2->prox;
     }
@@ -535,3 +772,69 @@ void fila_compleento(Fila *fi, Fila *fi1, Fila *fi_reserva)
 
 }
 
+/*
+7) Implemente a função reverso, que reposiciona os elementos na fila de
+tal forma que o início da fila torna-se o fim, e vice-versa.
+
+*/
+void fila_reversa(Fila *fi)
+{
+    Elem *ant = fi->inicio;
+    Elem *no = ant->prox;
+    Elem *aux;
+
+    ant->prox = NULL;
+    fi->final = ant;
+    while(no != NULL)
+    {
+        aux = no->prox;
+        no->prox = ant;
+        ant = no;
+        no = aux;
+    }
+    fi->inicio = ant;
+}
+
+/*
+8) Faça um programa que apresente um menu contínuo com as seguintes
+opções e execute de acordo com a escolha do usuário.
+void menu()
+{
+ printf("1-Inicializa fila.\n");
+ printf("2-Verifica se a fila é vazia.\n");
+ printf("3-Verifica se a fila é cheia.\n");
+ printf("4-Enfileira o elemento na fila.\n");
+ printf("5-Desefileira elemento da fila.\n");
+ printf("6-Le o número no início da fila.\n");
+ printf("7-Testar qual fila possui mais elementos .\n");
+ printf("8-Furar a fila .\n");
+ printf("9-Sair.\n");
+}
+*/
+
+void fura_fila(Fila *fi, struct aluno al)
+{
+    Elem *no = (Elem*)malloc(sizeof(Elem));
+    if(no == NULL)
+        return;
+
+    no->dados = al;
+    no->prox = fi->inicio;
+    fi->inicio = no;
+    fi->qtd++;
+
+
+}
+
+void menu()
+{
+    printf("1-Inicializa fila.\n");
+    printf("2-Verifica se a fila é vazia.\n");
+    printf("3-Verifica se a fila é cheia.\n");
+    printf("4-Enfileira o elemento na fila.\n");
+    printf("5-Desefileira elemento da fila.\n");
+    printf("6-Le o número no início da fila.\n");
+    printf("7-Testar qual fila possui mais elementos .\n");
+    printf("8-Furar a fila .\n");
+    printf("9-Sair.\n");
+}

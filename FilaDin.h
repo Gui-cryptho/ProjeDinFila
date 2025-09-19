@@ -18,6 +18,9 @@ int Fila_vazia(Fila* fi);
 int Fila_cheia(Fila* fi);
 void imprime_Fila(Fila* fi);
 
+
+
+
 //ex1
 int divorsio_edition(Fila *f1, Fila *f2, int n);
 
@@ -31,12 +34,29 @@ void imprime_fi_fi(Fila_Fila *fi_fi);
 void File_file(Fila *fi);
 
 //b:
+typedef struct fila_de_pilhas Fila_De_Pilhas;
+typedef struct pilha Pilha;
+Pilha *criar_pilha();
+Fila_De_Pilhas *criar_fila_pi();
+void empilhar(Pilha **pi, struct aluno al);
+void insere_pi(Fila_De_Pilhas *fi, Pilha *pi);
+void Imprimi_Pilha(Pilha *pi);
+void imprime_Fi_PI(Fila_De_Pilhas *fi_pi);
+void Fila_Pilha(Pilha *pi);
+void liberar_pilha(Pilha *pi);
 
 //c:
+typedef struct Elem_PiFi Pilha_Fila;
+void empilhar_fila(Pilha_Fila **pi_fi, Fila *fila);
+void imprime_pilha_filas(Pilha_Fila *pi_fi);
+void Pilha_de_Filas(Fila *f1);
+
+//ex3
 
 //ex4
 int Fila_Redonda(Fila* f1, struct aluno al);
 void imprimi_bolinha(Fila *f1);
+void fura_fila_circular(Fila *fi, struct aluno al);
 
 //ex5
 struct aviao
@@ -57,3 +77,12 @@ int primeiro_aviao(Fila_aviao *avi);
 int tamanho_aviao(Fila_aviao *avi);
 
 //ex6
+void ordena_fila_reserva(Fila *fi_reserva);
+void fila_compleento(Fila *fi, Fila *fi1, Fila *fi_reserva);
+
+//ex7
+void fila_reversa(Fila *fi);
+
+//ex8
+void fura_fila(Fila *fi, struct aluno al);
+void menu();
