@@ -51,6 +51,7 @@ void imprime_pilha_filas(Pilha_Fila *pi_fi);
 void Pilha_de_Filas(Fila *f1);
 
 //ex3
+void inverter_fila_com_pilha(Fila *f);
 
 //ex4
 int Fila_Redonda(Fila* f1, struct aluno al);
